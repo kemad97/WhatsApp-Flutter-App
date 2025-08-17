@@ -4,6 +4,7 @@ import 'stories_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
+  static const String id = 'main_screen';
 
   @override
   State<MainScreen> createState() => _MainScreenState();
