@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/whatsapp_theme.dart';
 
 class Story {
   final String name;
@@ -26,7 +27,7 @@ class StoriesScreen extends StatelessWidget {
       body: ListView(
         children: [
           ListTile(
-            leading: const CircleAvatar(radius: 26, child: Icon(Icons.person)),
+            leading: const CircleAvatar(radius: 26, child: Icon(Icons.person) ,backgroundColor: Colors.grey,),
             title: const Text('My Status'),
             subtitle: const Text('Tap to add status update'),
           ),
@@ -37,22 +38,23 @@ class StoriesScreen extends StatelessWidget {
           ),
           ...stories.map(
                 (story) => ListTile(
-              leading: CircleAvatar(
-                radius: 26,
-                child: Text(story.name[0]),
+              leading: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: kWhatsAppPrimary,
+                    width: 3.0,
+                  ),
+                ),
+                child: CircleAvatar(
+                  backgroundColor: Colors.grey,
+                  radius: 26,
+                  child: Text(story.name[0]),
+                ),
               ),
               title: Text(story.name),
               subtitle: Text(story.time),
-              onTap: () {
-                // Navigator.of(context).push(
-                //   PageRouteBuilder(
-                //     pageBuilder: (_, __, ___) => StoryViewer(name: story.name),
-                //     transitionsBuilder: (context, animation, _, child) {
-                //       return FadeTransition(opacity: animation, child: child);
-                //     },
-                //   ),
-                // );
-              },
+              onTap: () {},
             ),
           ),
         ],
