@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-const Color kWhatsAppPrimary = Color(0xFF128C7E);
-const Color kWhatsAppAccent  = Color(0xFF25D366);
+const Color kWhatsAppPrimary = Color(0xFF09B549);
+const Color kWhatsAppAccent  = Color(0xffaaffa8);
+
 
 final ThemeData lightWhatsAppTheme = ThemeData(
   brightness: Brightness.light,
@@ -10,9 +11,14 @@ final ThemeData lightWhatsAppTheme = ThemeData(
     primary: kWhatsAppPrimary,
     secondary: kWhatsAppAccent,
   ),
-  appBarTheme: AppBarTheme(
-    backgroundColor: kWhatsAppPrimary,
-    foregroundColor: Colors.white,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Colors.white,
+    foregroundColor: kWhatsAppPrimary, // green icons/text
+    titleTextStyle: TextStyle(
+      color: kWhatsAppPrimary,
+      fontSize: 25,
+      fontWeight: FontWeight.w600,
+    ),
   ),
 );
 
