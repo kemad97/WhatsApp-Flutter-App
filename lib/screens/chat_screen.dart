@@ -76,11 +76,11 @@ class _ChatScreenState extends State<ChatScreen>
       ),
       decoration: BoxDecoration(
         color: msg.isSender
-            ? const Color(0xFFE1FFC7)
+            ? const Color(0xFF004E35)
             : Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Text(msg.text),
+      child: Text(msg.text ,style: TextStyle(color: Colors.white),),
     );
 
     return Align(
