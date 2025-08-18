@@ -14,8 +14,8 @@ class HomeScreen extends StatelessWidget {
       return ListTile(
         leading: CircleAvatar(
           radius: 24,
-          child: Icon(Icons.person),
           backgroundColor: Colors.blueGrey,
+          child: Icon(Icons.person),
         ),
         title: Text(
           'Contact $index',

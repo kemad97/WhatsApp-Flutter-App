@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/whatsapp_theme.dart';
 
-class Message {
-  final String text;
-  final bool isSender;
-  final DateTime time;
+import '../models/message.dart';
 
-  Message({required this.text, required this.isSender, required this.time});
-}
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
