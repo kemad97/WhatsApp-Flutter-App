@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:whatsapp/screens/chat_screen.dart';
 import 'package:whatsapp/whatsapp_theme.dart';
-
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -33,25 +31,25 @@ class HomeScreen extends StatelessWidget {
     });
 
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: const Text(
-            'WhatsApp',
-            style: TextStyle(color: Color(0xFF1DC262)),
-          ),
-          actions: [
-            Icon(
-              Icons.camera_alt_outlined,
-              color: isDarkMode ? Colors.white : Colors.black, // Adjust color based on theme
-            ),
-            const SizedBox(width: 16),
-            Icon(
-              Icons.more_vert,
-              color: isDarkMode ? Colors.white : Colors.black, // Adjust color based on theme
-            ),
-            const SizedBox(width: 8),
-          ],
+      appBar: AppBar(
+        backgroundColor: isDarkMode ? kWhatsBackgroundDark : Colors.white,
+        title: Text(
+          'WhatsApp',
+          style: TextStyle(color:isDarkMode ? Colors.white : kWhatsAppPrimary),
         ),
+        actions: [
+          Icon(
+            Icons.camera_alt_outlined,
+            color: Theme.of(context).appBarTheme.foregroundColor ?? (isDarkMode ? Colors.white : Colors.black),
+          ),
+          const SizedBox(width: 16),
+          Icon(
+            Icons.more_vert,
+            color: Theme.of(context).appBarTheme.foregroundColor ?? (isDarkMode ? Colors.white : Colors.black),
+          ),
+          const SizedBox(width: 8),
+        ],
+      ),
       body: Column(
         children: [
           // Search bar
@@ -60,9 +58,14 @@ class HomeScreen extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Ask Meta AI or Search',
-                prefixIcon: const Icon(Icons.search),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Theme.of(context).iconTheme.color,
+                ),
                 filled: true,
-                fillColor: Colors.grey[100],
+                fillColor: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.grey[800]
+                    : Colors.grey[100],
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.5),
                   borderSide: BorderSide.none,
@@ -77,20 +80,68 @@ class HomeScreen extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Row(
-              children: const [
-                ChoiceChip(label: Text('All' ), selected: true , shape: StadiumBorder(),selectedColor: kWhatsAppAccent ),
-                SizedBox(width: 10)
-                ,
-                ChoiceChip(label: Text('Unread'), selected: false , shape: StadiumBorder()),
-                SizedBox(width: 10),
-
-                ChoiceChip(label: Text('Groups'), selected: false , shape: StadiumBorder()),
-                SizedBox(width: 10),
-                ChoiceChip(label: Text('Channels'), selected: false , shape: StadiumBorder()),
+              children: [
+                ChoiceChip(
+                  label: const Text('All'),
+                  selected: true,
+                  shape: const StadiumBorder(),
+                  selectedColor: kWhatsAppAccent,
+                  backgroundColor: isDarkMode
+                      ? Colors.grey[850]
+                      : Colors.grey[200],
+                  labelStyle: TextStyle(
+                    color: isDarkMode
+                        ? Colors.white
+                        : Colors.black87,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                ChoiceChip(
+                  label: const Text('Unread'),
+                  selected: false,
+                  shape: const StadiumBorder(),
+                  backgroundColor: isDarkMode
+                      ? Colors.grey[850]
+                      : Colors.grey[200],
+                  labelStyle: TextStyle(
+                    color: isDarkMode
+                        ? Colors.white
+                        : Colors.black87,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                ChoiceChip(
+                  label: const Text('Groups'),
+                  selected: false,
+                  shape: const StadiumBorder(),
+                  backgroundColor: isDarkMode
+                      ? Colors.grey[850]
+                      : Colors.grey[200],
+                  labelStyle: TextStyle(
+                    color: isDarkMode
+                        ? Colors.white
+                        : Colors.black87,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                ChoiceChip(
+                  label: const Text('Channels'),
+                  selected: false,
+                  shape: const StadiumBorder(),
+                  backgroundColor: isDarkMode
+                      ? Colors.grey[850]
+                      : Colors.grey[200],
+                  labelStyle: TextStyle(
+                    color: isDarkMode
+                        ? Colors.white
+                        : Colors.black87,
+                  ),
+                ),
+                const SizedBox(width: 14),
               ],
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
 
           // Chat list
           Expanded(
