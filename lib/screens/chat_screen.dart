@@ -102,9 +102,16 @@ class _ChatScreenState extends State<ChatScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Contact'),
+        title: const Text('Contact',style: TextStyle(color: Colors.black),),
       ),
-      body: Column(
+      body: Container(
+          decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('images/whatsapp_background.png'),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Column(
         children: [
           Expanded(
             child: ListView.builder(
@@ -169,8 +176,8 @@ class _ChatScreenState extends State<ChatScreen>
                     onPressed: _handleSend,
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all(kWhatsAppPrimary),
-                      shape: MaterialStateProperty.all(const CircleBorder()),
-                      padding: MaterialStateProperty.all(EdgeInsets.zero),
+                      shape: WidgetStateProperty.all(const CircleBorder()),
+                      padding: WidgetStateProperty.all(EdgeInsets.zero),
                     ),
                   ),
                 )
@@ -181,8 +188,8 @@ class _ChatScreenState extends State<ChatScreen>
                   },
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all(kWhatsAppPrimary),
-                    shape: MaterialStateProperty.all(const CircleBorder()),
-                    padding: MaterialStateProperty.all(EdgeInsets.zero),
+                    shape: WidgetStateProperty.all(const CircleBorder()),
+                    padding: WidgetStateProperty.all(EdgeInsets.zero),
                   ),
                 )
               ],
@@ -190,6 +197,7 @@ class _ChatScreenState extends State<ChatScreen>
           ),
         ],
       ),
+      )
     );
   }
 }
