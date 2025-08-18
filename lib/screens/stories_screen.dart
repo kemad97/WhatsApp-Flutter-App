@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../models/story.dart';
 import 'story_view_screen.dart';
 import 'package:whatsapp/whatsapp_theme.dart';
 
@@ -25,13 +26,12 @@ class StoriesScreen extends StatelessWidget {
             color: isDarkMode ? Colors.white : kWhatsAppPrimary,
           ),
         ),
-        backgroundColor: isDarkMode ? kWhatsAppPrimary : Colors.white,
+        backgroundColor: isDarkMode ? kWhatsBackgroundDark : Colors.white,
         actions: [
           IconButton(
             icon: const Icon(Icons.more_vert),
             color: isDarkMode ? Colors.white : Colors.black,
             onPressed: () {
-              // TODO: Implement more options (e.g., status privacy)
             },
           ),
         ],
@@ -52,7 +52,6 @@ class StoriesScreen extends StatelessWidget {
             title: const Text('My Status'),
             subtitle: const Text('Tap to add status update'),
             onTap: () {
-              // TODO: Implement "Add Status" functionality
             },
           ),
           const Padding(
