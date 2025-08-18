@@ -41,10 +41,7 @@ class _MainScreenState extends State<MainScreen> {
         showUnselectedLabels: true,
         elevation: 8.0,
         items: [
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.chat),
-            label: 'Chats',
-          ),
+          BottomNavigationBarItem(icon: const Icon(Icons.chat), label: 'Chats'),
           BottomNavigationBarItem(
             icon: const Icon(Icons.update),
             label: 'Updates',
@@ -53,10 +50,7 @@ class _MainScreenState extends State<MainScreen> {
             icon: const Icon(Icons.groups),
             label: 'Communities',
           ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.call),
-            label: 'Calls',
-          ),
+          BottomNavigationBarItem(icon: const Icon(Icons.call), label: 'Calls'),
         ],
       ),
     );

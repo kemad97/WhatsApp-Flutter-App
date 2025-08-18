@@ -11,19 +11,21 @@ class StoryViewScreen extends StatefulWidget {
   State<StoryViewScreen> createState() => _StoryViewScreenState();
 }
 
-class _StoryViewScreenState extends State<StoryViewScreen> with SingleTickerProviderStateMixin {
+class _StoryViewScreenState extends State<StoryViewScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _progressController;
   int _currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    _progressController = AnimationController(vsync: this, duration: const Duration(seconds: 3))
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          _nextStory();
-        }
-      });
+    _progressController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 3))
+          ..addStatusListener((status) {
+            if (status == AnimationStatus.completed) {
+              _nextStory();
+            }
+          });
     _startProgress();
   }
 
@@ -81,7 +83,12 @@ class _StoryViewScreenState extends State<StoryViewScreen> with SingleTickerProv
               widget.story.media[_currentIndex],
               fit: BoxFit.fitWidth,
               errorBuilder: (context, error, stackTrace) {
-                return const Center(child: Text('Image failed to load', style: TextStyle(color: Colors.white)));
+                return const Center(
+                  child: Text(
+                    'Image failed to load',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                );
               },
             ),
             Positioned(
@@ -93,7 +100,11 @@ class _StoryViewScreenState extends State<StoryViewScreen> with SingleTickerProv
                 children: [
                   Text(
                     widget.story.name,
-                    style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
                     '${_currentIndex + 1}/${widget.story.media.length}',
@@ -112,9 +123,13 @@ class _StoryViewScreenState extends State<StoryViewScreen> with SingleTickerProv
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 2),
                       child: LinearProgressIndicator(
-                        value: _currentIndex == index ? _progressController.value : (_currentIndex > index ? 1.0 : 0.0),
+                        value: _currentIndex == index
+                            ? _progressController.value
+                            : (_currentIndex > index ? 1.0 : 0.0),
                         backgroundColor: Colors.grey[600],
-                        valueColor: AlwaysStoppedAnimation<Color>(kWhatsAppPrimary),
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          kWhatsAppPrimary,
+                        ),
                         minHeight: 3,
                       ),
                     ),

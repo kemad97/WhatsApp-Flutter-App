@@ -35,17 +35,21 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: isDarkMode ? kWhatsBackgroundDark : Colors.white,
         title: Text(
           'WhatsApp',
-          style: TextStyle(color:isDarkMode ? Colors.white : kWhatsAppPrimary),
+          style: TextStyle(color: isDarkMode ? Colors.white : kWhatsAppPrimary),
         ),
         actions: [
           Icon(
             Icons.camera_alt_outlined,
-            color: Theme.of(context).appBarTheme.foregroundColor ?? (isDarkMode ? Colors.white : Colors.black),
+            color:
+                Theme.of(context).appBarTheme.foregroundColor ??
+                (isDarkMode ? Colors.white : Colors.black),
           ),
           const SizedBox(width: 16),
           Icon(
             Icons.more_vert,
-            color: Theme.of(context).appBarTheme.foregroundColor ?? (isDarkMode ? Colors.white : Colors.black),
+            color:
+                Theme.of(context).appBarTheme.foregroundColor ??
+                (isDarkMode ? Colors.white : Colors.black),
           ),
           const SizedBox(width: 8),
         ],
@@ -90,9 +94,7 @@ class HomeScreen extends StatelessWidget {
                       ? Colors.grey[850]
                       : Colors.grey[200],
                   labelStyle: TextStyle(
-                    color: isDarkMode
-                        ? Colors.white
-                        : Colors.black87,
+                    color: isDarkMode ? Colors.white : Colors.black87,
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -104,9 +106,7 @@ class HomeScreen extends StatelessWidget {
                       ? Colors.grey[850]
                       : Colors.grey[200],
                   labelStyle: TextStyle(
-                    color: isDarkMode
-                        ? Colors.white
-                        : Colors.black87,
+                    color: isDarkMode ? Colors.white : Colors.black87,
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -118,9 +118,7 @@ class HomeScreen extends StatelessWidget {
                       ? Colors.grey[850]
                       : Colors.grey[200],
                   labelStyle: TextStyle(
-                    color: isDarkMode
-                        ? Colors.white
-                        : Colors.black87,
+                    color: isDarkMode ? Colors.white : Colors.black87,
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -132,9 +130,7 @@ class HomeScreen extends StatelessWidget {
                       ? Colors.grey[850]
                       : Colors.grey[200],
                   labelStyle: TextStyle(
-                    color: isDarkMode
-                        ? Colors.white
-                        : Colors.black87,
+                    color: isDarkMode ? Colors.white : Colors.black87,
                   ),
                 ),
                 const SizedBox(width: 14),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 const Color kWhatsAppPrimary = Color(0xFF09B549);
-const Color kWhatsAppAccent  = Color(0xff7ed879);
+const Color kWhatsAppAccent = Color(0xff7ed879);
 const Color kWhatsBackgroundDark = Color(0xff0A1014);
-
 
 final ThemeData lightWhatsAppTheme = ThemeData(
   brightness: Brightness.light,
@@ -44,7 +43,5 @@ final ThemeData darkWhatsAppTheme = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
     fillColor: Colors.grey[600], // Dark input background
-
-
   ),
 );

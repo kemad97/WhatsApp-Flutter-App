@@ -21,11 +21,10 @@ class WhatsApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       initialRoute: MainScreen.id,
       routes: {
-        MainScreen.id: (context) =>  MainScreen(),
-        StoriesScreen.id: (context) =>  StoriesScreen(),
-        HomeScreen.id: (context) =>  HomeScreen(),
-        ChatScreen.id: (context) =>  ChatScreen(),
-
+        MainScreen.id: (context) => MainScreen(),
+        StoriesScreen.id: (context) => StoriesScreen(),
+        HomeScreen.id: (context) => HomeScreen(),
+        ChatScreen.id: (context) => ChatScreen(),
       },
     );
   }
