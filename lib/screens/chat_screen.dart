@@ -13,6 +13,7 @@ class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
   static const id = "chat_screen";
 
+
   @override
   State<ChatScreen> createState() => _ChatScreenState();
 }
@@ -21,6 +22,7 @@ class _ChatScreenState extends State<ChatScreen>
     with SingleTickerProviderStateMixin {
   final TextEditingController _controller = TextEditingController();
   bool _hasText = false; // Flag to track text input
+
 
   final List<Message> _messages = [
     Message(text: 'Hey! ', isSender: false, time: DateTime.now()),
@@ -100,9 +102,11 @@ class _ChatScreenState extends State<ChatScreen>
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Contact',style: TextStyle(color: Colors.black),),
+        title: Text('Contact',style: TextStyle(color:isDarkMode?Colors.white : kWhatsBackgroundDark ),),
       ),
       body: Container(
           decoration: const BoxDecoration(
