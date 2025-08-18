@@ -63,6 +63,7 @@ flutter:
     - images/whatsapp_background.png
     - images/story1.jpg
     - images/story2.jpg
+    - images/darkBackground.png
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

@@ -114,9 +114,9 @@ class _ChatScreenState extends State<ChatScreen>
         ),
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/whatsapp_background.png'),
+            image:isDarkMode? const AssetImage('images/darkBackground.png'):const AssetImage('images/whatsapp_background.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -141,10 +141,7 @@ class _ChatScreenState extends State<ChatScreen>
                       decoration: BoxDecoration(
                         color: Theme.of(context).cardColor,
                         borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: Colors.grey.shade300,
-                          width: 1,
-                        ),
+                      
                       ),
                       child: Row(
                         children: [
