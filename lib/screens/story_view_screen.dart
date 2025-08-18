@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/whatsapp_theme.dart';
-import 'stories_screen.dart';
-
-class Story {
-  final String name;
-  final String time;
-  final List<String> media;
-
-  Story({required this.name, required this.time, this.media = const ['images/story1.jpg', 'images/story2.jpg']});
-}
+import 'package:whatsapp/models/story.dart';
 
 class StoryViewScreen extends StatefulWidget {
   final Story story;
@@ -72,11 +64,14 @@ class _StoryViewScreenState extends State<StoryViewScreen> with SingleTickerProv
     return Scaffold(
       backgroundColor: Colors.black,
       body: GestureDetector(
-        onHorizontalDragEnd: (details) {
-          if (details.velocity.pixelsPerSecond.dx > 0) {
-            _previousStory();
-          } else if (details.velocity.pixelsPerSecond.dx < 0) {
-            _nextStory();
+        onTapDown: (details) {
+          final screenWidth = MediaQuery.of(context).size.width;
+          final tapPosition = details.localPosition.dx;
+
+          if (tapPosition < screenWidth / 2) {
+            _previousStory(); // Tap on the left half
+          } else {
+            _nextStory(); // Tap on the right half
           }
         },
         child: Stack(
@@ -84,12 +79,11 @@ class _StoryViewScreenState extends State<StoryViewScreen> with SingleTickerProv
           children: [
             Image.asset(
               widget.story.media[_currentIndex],
-              fit: BoxFit.scaleDown,
+              fit: BoxFit.fitWidth,
               errorBuilder: (context, error, stackTrace) {
                 return const Center(child: Text('Image failed to load', style: TextStyle(color: Colors.white)));
               },
             ),
-
             Positioned(
               top: 60,
               left: 16,
