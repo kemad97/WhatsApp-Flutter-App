@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/story.dart';
 import 'story_view_screen.dart';
-import 'package:whatsapp/whatsapp_theme.dart';
+import 'package:whatsapp/themes/whatsapp_theme.dart';
 
 class StoriesScreen extends StatelessWidget {
   StoriesScreen({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/screens/chat_screen.dart';
-import 'package:whatsapp/whatsapp_theme.dart';
+import 'package:whatsapp/themes/whatsapp_theme.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

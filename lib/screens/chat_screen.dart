@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/whatsapp_theme.dart';
+import 'package:whatsapp/themes/whatsapp_theme.dart';
 
 import '../models/message.dart';
 

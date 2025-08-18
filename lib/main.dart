@@ -3,7 +3,7 @@ import 'package:whatsapp/screens/chat_screen.dart';
 import 'package:whatsapp/screens/home_screen.dart';
 import 'package:whatsapp/screens/main_screen.dart';
 import 'package:whatsapp/screens/stories_screen.dart';
-import 'package:whatsapp/whatsapp_theme.dart';
+import 'package:whatsapp/themes/whatsapp_theme.dart';
 
 void main() {
   runApp(const WhatsApp());
