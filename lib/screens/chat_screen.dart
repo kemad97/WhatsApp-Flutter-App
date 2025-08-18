@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/whatsapp_theme.dart';
 
-class Message{
+class Message {
   final String text;
   final bool isSender;
   final DateTime time;
-  
-  Message({required this.text, required this.isSender, required this.time} );
-}
 
+  Message({required this.text, required this.isSender, required this.time});
+}
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -20,9 +20,10 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen>
     with SingleTickerProviderStateMixin {
   final TextEditingController _controller = TextEditingController();
+  bool _hasText = false; // Flag to track text input
 
   final List<Message> _messages = [
-    Message(text: 'Hey! 👋', isSender: false, time: DateTime.now()),
+    Message(text: 'Hey! ', isSender: false, time: DateTime.now()),
     Message(text: 'Hello!', isSender: true, time: DateTime.now()),
     Message(text: 'Are you free this evening?', isSender: false, time: DateTime.now()),
     Message(text: 'Yes! Let’s meet at 7.', isSender: true, time: DateTime.now()),
@@ -39,13 +40,21 @@ class _ChatScreenState extends State<ChatScreen>
       duration: const Duration(milliseconds: 150),
     );
     _sendAnimation = Tween(begin: 1.0, end: 0.7).animate(_sendController);
+    _controller.addListener(_onTextChanged);
   }
 
   @override
   void dispose() {
+    _controller.removeListener(_onTextChanged);
     _controller.dispose();
     _sendController.dispose();
     super.dispose();
+  }
+
+  void _onTextChanged() {
+    setState(() {
+      _hasText = _controller.text.trim().isNotEmpty;
+    });
   }
 
   void _handleSend() {
@@ -76,11 +85,11 @@ class _ChatScreenState extends State<ChatScreen>
       ),
       decoration: BoxDecoration(
         color: msg.isSender
-            ? const Color(0xFF004E35)
+            ? const Color(0xFFE1FFC7)
             : Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Text(msg.text ,style: TextStyle(color: Colors.white),),
+      child: Text(msg.text, style: const TextStyle(color: Colors.black)),
     );
 
     return Align(
@@ -106,27 +115,76 @@ class _ChatScreenState extends State<ChatScreen>
               },
             ),
           ),
-          const Divider(height: 1),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             child: Row(
               children: [
                 Expanded(
-                  child: TextField(
-                    controller: _controller,
-                    decoration: const InputDecoration(
-                      hintText: 'Type a message',
-                      border: InputBorder.none,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.grey.shade300, width: 1),
+                    ),
+                    child: Row(
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.emoji_emotions_outlined),
+                          onPressed: () {
+                            // TODO: Implement attachment functionality
+                          },
+                        ),
+                        Expanded(
+                          child: TextField(
+                            controller: _controller,
+                            decoration: const InputDecoration(
+                              hintText: 'Type a message',
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.attach_file),
+                          onPressed: () {
+                            // TODO: Implement attachment functionality
+                          },
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.camera_alt),
+                          onPressed: () {
+                            // TODO: Implement camera functionality
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                ScaleTransition(
+
+                _hasText
+                    ? ScaleTransition(
                   scale: _sendAnimation,
                   child: IconButton(
-                    icon: const Icon(Icons.send),
+                    icon: const Icon(Icons.send, color: Colors.white),
                     onPressed: _handleSend,
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all(kWhatsAppPrimary),
+                      shape: MaterialStateProperty.all(const CircleBorder()),
+                      padding: MaterialStateProperty.all(EdgeInsets.zero),
+                    ),
                   ),
-                ),
+                )
+                    : IconButton(
+                  icon: const Icon(Icons.mic, color: Colors.white),
+                  onPressed: () {
+                    // TODO: Implement voice message functionality
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(kWhatsAppPrimary),
+                    shape: MaterialStateProperty.all(const CircleBorder()),
+                    padding: MaterialStateProperty.all(EdgeInsets.zero),
+                  ),
+                )
               ],
             ),
           ),
